@@ -1,0 +1,11 @@
+{% load truncate %}
+
+<h1 class="post-title"><a href="{{ zhishi.get_absolute_url }}" title="{{ zhishi.title }}"><strong>{{ zhishi.title|upper|truncate:47 }}</strong></a></h1>
+<h2 class="post-header-line1">{{ zhishi.pub_date|date:"F j, Y" }} by {{ zhishi.author }} {% if zhishi.get_tags %}| {{ zhishi.get_tags|safeseq|join:", " }} {% endif %}</h2>
+
+{% ifequal request.user zhishi.author  %}
+    <a href="{% url zhishi-edit zhishi.id %}" title="Edit"><div class="edit" style="float:left;margin-right:5px;"></div><noscript>Edit</noscript></a>
+    <a href="{% url zhishi-delete zhishi.id %}" title="Delete"><div class="delete" style="float:left;"></div><noscript>Delete</noscript></a>
+    <br/>
+{% endifequal %}
+<br/>

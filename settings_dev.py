@@ -1,11 +1,9 @@
 # Django settings for douzhr project.
 
 import os
-PROJECT_ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT_PATH = os.path.dirname(abspath(__file__))
 
 DEBUG = True
-#DEBUG = False
-LOCAL = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -17,7 +15,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'douzhr.db',                      # Or path to database file if using sqlite3.
+        'NAME': '',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -55,7 +53,7 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT_PATH, 'media')
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = '/media/'
+MEDIA_URL = ''
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -124,7 +122,6 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     WEB_TEMPLATE_DIR,
-    os.path.join(WEB_TEMPLATE_DIR, 'registration'),
     os.path.join(WEB_TEMPLATE_DIR, 'zhishi'),
 )
 
@@ -136,14 +133,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    'django.contrib.admin',
+    # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'robots',
+    'rebots',
     'zhishi',
     'tagging',
     'pagination',
-    'registration',
 )
 
 DATE_FORMAT = '%d/%m/%Y'
@@ -151,10 +147,6 @@ DATETIME_FORMAT = 'd/m/Y - H:i:s'
 SITE_NAME = 'douzhr'
 ROBOTS_SITEMAP_URL = '/sitemap.xml'
 
-ACCOUNT_ACTIVATION_DAYS = 3
-LOGIN_REDIRECT_URL = '/'
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 1025
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error.

@@ -1,8 +1,9 @@
 from django.conf.urls.defaults import patterns, include, url
+from zhishi.sitemaps import LatestZhishiSitemap
 
 # Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
@@ -13,5 +14,17 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': {'zhishi': LatestZhishiSitemap}}),
+    url(r'robots\.txt$', include('robots.urls')),
+    url(r'^$', 'zhishi.views.show_latest'),
+    url(r'^zhishi/', include('zhishi.urls')),
 )
+
+
+from django.conf import settings
+if settings.LOCAL:
+    urlpatterns += patterns('',
+        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root':settings.MEDIA_ROOT}),
+    )
