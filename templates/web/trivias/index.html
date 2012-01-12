@@ -14,10 +14,10 @@
 {% load pagination_tags %}
 {% autopaginate trivias 10 %}
 
-
+<script type="text/javascript" src="{{MEDIA_URL }}js/socialshare.js"> </script>
+<script type="text/javascript" src="http://widget.renren.com/js/rrshare.js"></script>
 {% for trivia in trivias %}
 <div class="post"> 
-
 
    {% include 'post_title.html' %}
 
