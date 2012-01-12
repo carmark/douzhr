@@ -1,6 +1,13 @@
 {% load truncate %}
 
-<h1 class="post-title"><a href="{{ trivia.get_absolute_url }}" title="{{ trivia.title }}"><strong>{{ trivia.title|upper|truncate:47 }}</strong></a></h1>
+<h1 class="post-title"><a href="{{ trivia.get_absolute_url }}" title="{{ trivia.title }}"><strong>{{ trivia.title|upper|truncate:47 }}</strong></a>
+
+<span style="float:right"><a href="javascript:void(0);"  onclick="window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+encodeURIComponent('http://www.douzhr.com{{ trivia.get_absolute_url }}'));return false;" title="分享到QQ空间"><img src="http://qzonestyle.gtimg.cn/ac/qzone_v5/app/app_share/qz_logo.png" alt="分享到QQ空间" style="vertical-align:middle;padding-top:2px"/></a>
+
+<a href="javascript:shareToSina('{{trivia.get_absolute_url}}', '{{trivia.body}}')" title="新浪微博分享"><img src="http://t.sina.com.cn/favicon.ico"  alt="新浪微博分享" style="vertical-align:middle;padding-top:0px"></a>
+<a href="javascript:shareToDouban('{{trivia.get_absolute_url}}', '{{trivia.title}}')" title="豆瓣分享"><img src="http://www.douban.com/favicon.ico"  alt="豆瓣分享" style="vertical-align:middle;padding-top:0px"></a>
+<a href="javascript:shareToRenren('{{trivia.get_absolute_url}}', '{{trivia.title}}', '{{trivia.body|truncate:100|safe}}')" title="人人网分享"><img src="http://www.wtzy.net/tpl/red/img/renren.gif"  alt="人人网分享" style="vertical-align:middle;padding-top:0px"></a></span></h1>
+
 <h2 class="post-header-line1">{{ trivia.pub_date|date:"F j, Y" }} by {{ trivia.author }} {% if trivia.get_tags %}| {{ trivia.get_tags|safeseq|join:", " }} {% endif %}</h2>
 
 {% ifequal request.user trivia.author  %}
