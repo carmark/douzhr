@@ -1,0 +1,11 @@
+{% load truncate %}
+
+<h1 class="post-title"><a href="{{ trivia.get_absolute_url }}" title="{{ trivia.title }}"><strong>{{ trivia.title|upper|truncate:47 }}</strong></a></h1>
+<h2 class="post-header-line1">{{ trivia.pub_date|date:"F j, Y" }} by {{ trivia.author }} {% if trivia.get_tags %}| {{ trivia.get_tags|safeseq|join:", " }} {% endif %}</h2>
+
+{% ifequal request.user trivia.author  %}
+    <a href="{% url trivia-edit trivia.id %}" title="Edit"><div class="edit" style="float:left;margin-right:5px;"></div><noscript>Edit</noscript></a>
+    <a href="{% url trivia-delete trivia.id %}" title="Delete"><div class="delete" style="float:left;"></div><noscript>Delete</noscript></a>
+    <br/>
+{% endifequal %}
+<br/>
