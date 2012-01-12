@@ -133,7 +133,7 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     WEB_TEMPLATE_DIR,
     os.path.join(WEB_TEMPLATE_DIR, 'registration'),
-    os.path.join(WEB_TEMPLATE_DIR, 'zhishi'),
+    os.path.join(WEB_TEMPLATE_DIR, 'trivias'),
     os.path.join(WEB_TEMPLATE_DIR, 'debug_toolbar'),
 )
 
@@ -150,7 +150,8 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'robots',
-    'zhishi',
+    #'zhishi',
+    'trivias',
     'tagging',
     'pagination',
     'registration',
