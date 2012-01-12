@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^comments/', include('django.contrib.comments.urls')),
     url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': {'zhishi': LatestZhishiSitemap}}),
     url(r'robots\.txt$', include('robots.urls')),
     url(r'^$', 'zhishi.views.show_latest'),

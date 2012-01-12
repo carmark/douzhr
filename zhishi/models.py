@@ -39,7 +39,7 @@ class Zhishi(models.Model):
         return self.title
         
     def get_absolute_url(self):
-        return '/tips/read/%d/%s' % (self.id, self.slug_title)
+        return '/zhishi/read/%d/%s' % (self.id, self.slug_title)
     
     def set_tags(self, tags):
         Tag.objects.update_tags(self, tags)
@@ -71,7 +71,7 @@ class Bookmark(models.Model):
     is_deleted = models.BooleanField(default=False)
     
     def __unicode__(self):
-        return u'%s by %s (bookmarked in %s)' % (self.tip, self.user, self.mark_date)
+        return u'%s by %s (bookmarked in %s)' % (self.zhishi, self.user, self.mark_date)
 
     def delete_bookmark(self):
         self.is_deleted = True

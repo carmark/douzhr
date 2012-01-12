@@ -13,6 +13,12 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
+DEFAULT_FROM_EMAIL = 'Douzhr <carmark.dlut@gmail.com>'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'carmark.dlut@gmail.com' 
+EMAIL_USE_TLS=1
+EMAIL_HOST_PASSWORD = 'DLxl@010'
+EMAIL_PORT = 587
 
 DATABASES = {
     'default': {
@@ -104,6 +110,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'pagination.middleware.PaginationMiddleware',
+    'middleware.threadlocals.ThreadLocals',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -126,6 +134,7 @@ TEMPLATE_DIRS = (
     WEB_TEMPLATE_DIR,
     os.path.join(WEB_TEMPLATE_DIR, 'registration'),
     os.path.join(WEB_TEMPLATE_DIR, 'zhishi'),
+    os.path.join(WEB_TEMPLATE_DIR, 'debug_toolbar'),
 )
 
 INSTALLED_APPS = (
@@ -134,6 +143,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
+    'django.contrib.comments',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
@@ -144,6 +154,7 @@ INSTALLED_APPS = (
     'tagging',
     'pagination',
     'registration',
+    'debug_toolbar',
 )
 
 DATE_FORMAT = '%d/%m/%Y'
@@ -152,9 +163,10 @@ SITE_NAME = 'douzhr'
 ROBOTS_SITEMAP_URL = '/sitemap.xml'
 
 ACCOUNT_ACTIVATION_DAYS = 3
+SITE_NAME='Douzhr'
 LOGIN_REDIRECT_URL = '/'
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 1025
+APPROVE_NEW_TIPS_AUTOMATICALY = True
+
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error.
@@ -177,3 +189,18 @@ LOGGING = {
         },
     }
 }
+
+
+INTERNAL_IPS = ('127.0.0.1',)
+
+DEBUG_TOOLBAR_PANELS = (
+    'debug_toolbar.panels.version.VersionDebugPanel',
+    'debug_toolbar.panels.timer.TimerDebugPanel',
+    'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
+    'debug_toolbar.panels.headers.HeaderDebugPanel',
+    'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
+    'debug_toolbar.panels.template.TemplateDebugPanel',
+    'debug_toolbar.panels.sql.SQLDebugPanel',
+    'debug_toolbar.panels.signals.SignalDebugPanel',
+    'debug_toolbar.panels.logger.LoggingPanel'
+)

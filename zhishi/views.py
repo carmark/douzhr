@@ -70,7 +70,7 @@ def simple_search(request):
     return HttpResponseRedirect(reverse('zhishi-latest'))
 
 
-#login_required
+@login_required
 def myzhishi(request, form=None):
     if form == None:
         form = ZhishiForm()
@@ -85,15 +85,11 @@ def myzhishi(request, form=None):
 def add_zhishi(request):
     if request.POST:
         form = ZhishiForm(request.POST)
-        try:
+        if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('zhishi-myzhishi'))
-        except:
-            pass
-            
-        return myzhishi(request, form)
-    #return HttpResponseRedirect(reverse('tip-mytips'))
-    return direct_to_template(request, 'edit.html', {'form':ZhishiForm()})
+
+    return direct_to_template(request, 'add.html', {'form':ZhishiForm()})
 
 
 @login_required
@@ -118,7 +114,8 @@ def update_zhishi(request):
         zhishi = get_object_or_404(Zhishi, id=id, author=request.user)
         form = ZhishiForm(request.POST, instance=zhishi)
         try:
-            form.save()
+            zhishi = form.save()
+            zhishi.save()
             return HttpResponseRedirect(reverse('zhishi-myzhishi'))
         except:
             pass
