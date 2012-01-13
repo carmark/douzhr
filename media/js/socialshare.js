@@ -1,6 +1,22 @@
 /*
 Simple Social Share Plugin
 */
+
+function shareToQQ(u, b){
+    var e=encodeURIComponent;
+    var _t = b;
+    var metainfo = document.getElementsByTagName("meta");
+    if(_t.length > 120){
+        _t= _t.substr(0,117)+'...';
+    }
+    else{
+        _t= _t+'   ';
+    }
+    var f='http://share.v.t.qq.com/index.php?c=share&a=index&url=';
+    var p= ['http://douzhr.com'+e(u)+'&appkey=appkey&pic=&assname=&title='+e(_t)];
+    window.open( f+p,'mb', 'width=700, height=680, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=yes, resizable=no, status=no' );
+}
+
 function shareToSina(u,b)
 {
     var s=screen,e=encodeURIComponent;
@@ -29,6 +45,7 @@ function shareToRenren(u, t, b)
     };
     rrShareOnclick(rrShareParam);
 }
+
 
 function shareToDouban(u, t){
     var s=screen,e=encodeURIComponent;
