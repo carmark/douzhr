@@ -6,7 +6,7 @@ from trivias.models import Trivia
 def menu(request):
     context = {}
     context.update(tags())
-    context.update(top_tips())
+    context.update(top_trivias())
     return context
     
     
