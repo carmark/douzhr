@@ -50,8 +50,11 @@
                         <li><a href="{% url trivia-latest %}"{% ifequal active_menu 'home' %}class="active"{% endifequal %}><span>Home</span></a></li>
                         
                         <li><a href="{% url trivia-mytrivias %}"{% ifequal active_menu 'myzhishi' %}class="active"{% endifequal %}><span>My Tips</span></a></li>
+                        <li><a href="{% url feedback-form %}"{% ifequal active_menu 'feedback' %}class="active"{% endifequal %}><span>Feedback</span></a></li>
                         
-                        
+                        {% if not user.is_authenticated %}
+                            <li><a href="{% url auth_login %}"{% ifequal active_menu 'login' %}class="active"{% endifequal %}><span>Login</span></a></li>
+                        {% endif %}
                         <!-- <li><a href="#"><span>About</span></a></li> -->
                     </ul>
                 </div>
@@ -78,7 +81,7 @@
                     <div class="auth" style="width:250px;">    
                         <h2>My account</h2>
                         <div style="padding:5px;font-size:0.8em;line-height:18px;">
-                            You are logged as <b>{{ request.user }}</b>.<br/>
+                            You are logged as <b>{{ request.user }}</b>. <a href="{%url auth_logout %}">logout</a><br/>
                         </div>
                     </div>
                 </div>
