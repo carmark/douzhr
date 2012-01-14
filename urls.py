@@ -23,6 +23,7 @@ urlpatterns = patterns('',
 #    url(r'^zhishi/', include('zhishi.urls')),
     url(r'^$', 'trivias.views.show_latest'),
     url(r'^trivias/', include('trivias.urls')),
+    url(r'^feedback/', include('feedback.urls')),
 )
 
 

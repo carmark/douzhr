@@ -135,6 +135,7 @@ TEMPLATE_DIRS = (
     WEB_TEMPLATE_DIR,
     os.path.join(WEB_TEMPLATE_DIR, 'registration'),
     os.path.join(WEB_TEMPLATE_DIR, 'trivias'),
+    os.path.join(WEB_TEMPLATE_DIR, 'feedback'),
     os.path.join(WEB_TEMPLATE_DIR, 'debug_toolbar'),
 )
 
@@ -157,6 +158,7 @@ INSTALLED_APPS = (
     'pagination',
     'registration',
     'debug_toolbar',
+    'feedback',
 )
 
 DATE_FORMAT = '%d/%m/%Y'
